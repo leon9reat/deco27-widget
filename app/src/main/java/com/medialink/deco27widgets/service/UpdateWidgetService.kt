@@ -4,6 +4,7 @@ import android.app.job.JobParameters
 import android.app.job.JobService
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
+import android.util.Log
 import android.widget.RemoteViews
 import com.medialink.deco27widgets.NumberGenerator
 import com.medialink.deco27widgets.R
@@ -20,6 +21,7 @@ class UpdateWidgetService: JobService() {
         val theWidget = ComponentName(this, RandomNumberWidget::class.java)
         val lastUpdate = "Random ${NumberGenerator.generate(100)}"
         view.setTextViewText(R.id.appwidget_text, lastUpdate)
+        Log.d("debug", "proses onStartJob()")
 
         manager.updateAppWidget(theWidget, view)
         jobFinished(params, false)
